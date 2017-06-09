@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+<tableList databaseId="0" databaseName="MYSQL" databaseProductName="MySQL" generation="2017-06-07 11:24:26">
+<table catalog="servicos_gerais" databaseType="TABLE" javaBean="Cliente" name="cliente" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="nome" dbNotNull="true" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="nome" javaType="java.lang.String" jdbcTypeCode="12" label="Nome" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="telefone" dbNotNull="true" dbPosition="3" dbSize="12" dbTypeName="VARCHAR" inputType="text" javaName="telefone" javaType="java.lang.String" jdbcTypeCode="12" label="Telefone" maxLength="12" notEmpty="true" notNull="true" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_servico_cliente" id="LINK_FK_fk_servico_cliente_I" inverseSideOf="LINK_FK_fk_servico_cliente_O" javaName="listOfServico" javaType="java.util.List" joinTableName="" mappedBy="cliente" optional="UNDEFINED" owningSide="false" sourceTableName="cliente" targetEntity="Servico" targetTableName="servico" used="true"/>
+</table>
+<table catalog="servicos_gerais" databaseType="TABLE" javaBean="Servico" name="servico" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="CURRENT_TIMESTAMP" dbName="data_entrada" dbNotNull="true" dbPosition="2" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dataEntrada" javaType="java.util.Date" jdbcTypeCode="93" label="Data entrada" notNull="true" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="data_saida" dbNotNull="false" dbPosition="3" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dataSaida" javaType="java.util.Date" jdbcTypeCode="93" label="Data saida" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="valor" dbNotNull="true" dbPosition="4" dbSize="12" dbTypeName="FLOAT" inputType="number" javaName="valor" javaType="java.lang.Float" jdbcTypeCode="7" label="Valor" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="observacao" dbNotNull="true" dbPosition="5" dbSize="300" dbTypeName="VARCHAR" inputType="text" javaName="observacao" javaType="java.lang.String" jdbcTypeCode="12" label="Observacao" maxLength="300" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="cliente_id" dbNotNull="false" dbPosition="6" dbSize="10" dbTypeName="INT" inputType="number" javaName="clienteId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Cliente id" notNull="false" selected="true"/>
+<fk name="fk_servico_cliente">
+<fkcol colname="cliente_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="servico" tableref="cliente" updaterule="3"/>
+</fk>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_servico_roupas_servico" id="LINK_FK_fk_servico_roupas_servico_I" inverseSideOf="LINK_FK_fk_servico_roupas_servico_O" javaName="listOfServicoRoupas" javaType="java.util.List" joinTableName="" mappedBy="servico" optional="UNDEFINED" owningSide="false" sourceTableName="servico" targetEntity="ServicoRoupas" targetTableName="servico_roupas" used="true"/>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_servico_cliente" id="LINK_FK_fk_servico_cliente_O" inverseSideOf="" javaName="cliente" javaType="Cliente" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="servico" targetEntity="Cliente" targetTableName="cliente" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="cliente_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="servicos_gerais" databaseType="TABLE" javaBean="ServicoRoupas" name="servico_roupas" schema="">
+<column dbComment="" dbDefaultValue="" dbForeignKey="true" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="tipo_servico" dbNotNull="true" dbPosition="2" dbSize="15" dbTypeName="VARCHAR" inputType="text" javaName="tipoServico" javaType="java.lang.String" jdbcTypeCode="12" label="Tipo servico" maxLength="15" notEmpty="true" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="quantidade_pecas" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="quantidadePecas" javaType="java.lang.Integer" jdbcTypeCode="4" label="Quantidade pecas" notNull="true" selected="true"/>
+<fk name="fk_servico_roupas_servico">
+<fkcol colname="id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="servico_roupas" tableref="servico" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_servico_roupas_servico" id="LINK_FK_fk_servico_roupas_servico_O" inverseSideOf="" javaName="servico" javaType="Servico" joinTableName="" mappedBy="" optional="UNDEFINED" owningSide="true" sourceTableName="servico_roupas" targetEntity="Servico" targetTableName="servico" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+</tableList>
+</root>
