@@ -22,9 +22,6 @@ public class ServicoRoupas implements Serializable {
     //----------------------------------------------------------------------
     // ENTITY DATA FIELDS 
     //----------------------------------------------------------------------    
-    @NotNull
-    @Size( min = 1, max = 15 )
-    private String tipoServico;
 
     @NotNull
     private Integer quantidadePecas;
@@ -46,12 +43,6 @@ public class ServicoRoupas implements Serializable {
     //----------------------------------------------------------------------
     // GETTERS & SETTERS FOR FIELDS
     //----------------------------------------------------------------------
-    public void setTipoServico( String tipoServico ) {
-        this.tipoServico = tipoServico;
-    }
-    public String getTipoServico() {
-        return this.tipoServico;
-    }
 
     public void setQuantidadePecas( Integer quantidadePecas ) {
         this.quantidadePecas = quantidadePecas;
@@ -68,8 +59,6 @@ public class ServicoRoupas implements Serializable {
         public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append(id);
-        sb.append("|");
-        sb.append(tipoServico);
         sb.append("|");
         sb.append(quantidadePecas);
         return sb.toString(); 

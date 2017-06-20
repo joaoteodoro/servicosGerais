@@ -54,11 +54,11 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente create(Cliente cliente) {
-		ClienteEntity clienteEntity = clienteJpaRepository.findOne(cliente.getId());
+		/*ClienteEntity clienteEntity = clienteJpaRepository.findOne(cliente.getId());
 		if( clienteEntity != null ) {
 			throw new IllegalStateException("already.exists");
-		}
-		clienteEntity = new ClienteEntity();
+		}*/
+		ClienteEntity clienteEntity = new ClienteEntity();
 		clienteServiceMapper.mapClienteToClienteEntity(cliente, clienteEntity);
 		ClienteEntity clienteEntitySaved = clienteJpaRepository.save(clienteEntity);
 		return clienteServiceMapper.mapClienteEntityToCliente(clienteEntitySaved);

@@ -26,13 +26,12 @@ import org.servicosGerais.web.listitem.ClienteListItem;
  * Spring MVC controller for 'Cliente' management.
  */
 @Controller
-@RequestMapping("/rest/cliente")
 public class ClienteRestController {
 
 	@Resource
 	private ClienteService clienteService;
 	
-	@RequestMapping( value="/items",
+	@RequestMapping( value="/items/cliente",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -46,7 +45,7 @@ public class ClienteRestController {
 		return items;
 	}
 	
-	@RequestMapping( value="/clientes",
+	@RequestMapping( value="/cliente",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -64,7 +63,7 @@ public class ClienteRestController {
 		return clienteService.findById(id);
 	}
 	
-	@RequestMapping( value="/novo",
+	@RequestMapping( value="/cliente",
 			method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -73,7 +72,7 @@ public class ClienteRestController {
 		return clienteService.create(cliente);
 	}
 
-	@RequestMapping( value="/altera/{id}",
+	@RequestMapping( value="/cliente/{id}",
 			method = RequestMethod.PUT,
 			produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -82,7 +81,7 @@ public class ClienteRestController {
 		return clienteService.update(cliente);
 	}
 
-	@RequestMapping( value="/remove/{id}",
+	@RequestMapping( value="/cliente/{id}",
 			method = RequestMethod.DELETE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)

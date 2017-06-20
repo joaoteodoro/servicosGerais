@@ -47,14 +47,12 @@ public class ServicoRoupasServiceMapperTest {
 	public void testMapServicoRoupasEntityToServicoRoupas() {
 		// Given
 		ServicoRoupasEntity servicoRoupasEntity = new ServicoRoupasEntity();
-		servicoRoupasEntity.setTipoServico(mockValues.nextString(15));
 		servicoRoupasEntity.setQuantidadePecas(mockValues.nextInteger());
 		
 		// When
 		ServicoRoupas servicoRoupas = servicoRoupasServiceMapper.mapServicoRoupasEntityToServicoRoupas(servicoRoupasEntity);
 		
 		// Then
-		assertEquals(servicoRoupasEntity.getTipoServico(), servicoRoupas.getTipoServico());
 		assertEquals(servicoRoupasEntity.getQuantidadePecas(), servicoRoupas.getQuantidadePecas());
 	}
 	
@@ -74,7 +72,6 @@ public class ServicoRoupasServiceMapperTest {
 		servicoRoupasServiceMapper.mapServicoRoupasToServicoRoupasEntity(servicoRoupas, servicoRoupasEntity);
 		
 		// Then
-		assertEquals(servicoRoupas.getTipoServico(), servicoRoupasEntity.getTipoServico());
 		assertEquals(servicoRoupas.getQuantidadePecas(), servicoRoupasEntity.getQuantidadePecas());
 	}
 

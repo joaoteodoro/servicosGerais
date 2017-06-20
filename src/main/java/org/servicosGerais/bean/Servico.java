@@ -38,6 +38,10 @@ public class Servico implements Serializable {
 
 
     private Integer clienteId;
+    
+    @NotNull
+    @Size( min = 1, max = 15 )
+    private String tipoServico;
 
 
 
@@ -56,6 +60,13 @@ public class Servico implements Serializable {
     //----------------------------------------------------------------------
     // GETTERS & SETTERS FOR FIELDS
     //----------------------------------------------------------------------
+    public void setTipoServico( String tipoServico ) {
+        this.tipoServico = tipoServico;
+    }
+    public String getTipoServico() {
+        return this.tipoServico;
+    }
+    
     public void setDataEntrada( Date dataEntrada ) {
         this.dataEntrada = dataEntrada;
     }
@@ -107,6 +118,8 @@ public class Servico implements Serializable {
         sb.append(valor);
         sb.append("|");
         sb.append(observacao);
+        sb.append("|");
+        sb.append(tipoServico);
         sb.append("|");
         sb.append(clienteId);
         return sb.toString(); 

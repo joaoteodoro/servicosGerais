@@ -16,6 +16,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.servicosGerais.bean.enun.TipoServico;
+
 /**
  * Persistent class for entity stored in table "servico"
  *
@@ -58,6 +60,10 @@ public class ServicoEntity implements Serializable {
 
     @Column(name="observacao", nullable=false, length=300)
     private String     observacao   ;
+    
+    @Column(name="tipo_servico", nullable=false, length=15)
+    @Enumerated(EnumType.STRING)
+    private TipoServico     tipoServico  ;
 
 	// "clienteId" (column "cliente_id") is not defined by itself because used as FK in a link 
 
@@ -90,6 +96,14 @@ public class ServicoEntity implements Serializable {
         return this.id;
     }
 
+    //--- DATABASE MAPPING : tipo_servico ( VARCHAR ) 
+    public void setTipoServico( TipoServico tipoServico ) {
+        this.tipoServico = tipoServico;
+    }
+    public TipoServico getTipoServico() {
+        return this.tipoServico;
+    }
+    
     //----------------------------------------------------------------------
     // GETTERS & SETTERS FOR FIELDS
     //----------------------------------------------------------------------
@@ -157,6 +171,8 @@ public class ServicoEntity implements Serializable {
         sb.append(dataSaida);
         sb.append("|");
         sb.append(valor);
+        sb.append("|");
+        sb.append(tipoServico);
         sb.append("|");
         sb.append(observacao);
         return sb.toString(); 

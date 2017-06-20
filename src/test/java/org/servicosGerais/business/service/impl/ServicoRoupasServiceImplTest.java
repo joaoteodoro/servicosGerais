@@ -12,18 +12,18 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.servicosGerais.bean.ServicoRoupas;
-import org.servicosGerais.bean.jpa.ServicoRoupasEntity;
-import org.servicosGerais.business.service.mapping.ServicoRoupasServiceMapper;
-import org.servicosGerais.data.repository.jpa.ServicoRoupasJpaRepository;
-import org.servicosGerais.test.ServicoRoupasFactoryForTest;
-import org.servicosGerais.test.ServicoRoupasEntityFactoryForTest;
-import org.servicosGerais.test.MockValues;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.servicosGerais.bean.ServicoRoupas;
+import org.servicosGerais.bean.jpa.ServicoRoupasEntity;
+import org.servicosGerais.business.service.mapping.ServicoRoupasServiceMapper;
+import org.servicosGerais.data.repository.jpa.ServicoRoupasJpaRepository;
+import org.servicosGerais.test.MockValues;
+import org.servicosGerais.test.ServicoRoupasEntityFactoryForTest;
+import org.servicosGerais.test.ServicoRoupasFactoryForTest;
 
 /**
  * Test : Implementation of ServicoRoupasService

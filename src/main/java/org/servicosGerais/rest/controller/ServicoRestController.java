@@ -9,6 +9,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.servicosGerais.bean.Servico;
+import org.servicosGerais.bean.enun.TipoServico;
+import org.servicosGerais.business.service.ServicoService;
+import org.servicosGerais.web.listitem.ServicoListItem;
+import org.servicosGerais.web.listitem.TipoServicoListItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -18,9 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.servicosGerais.bean.Servico;
-import org.servicosGerais.business.service.ServicoService;
-import org.servicosGerais.web.listitem.ServicoListItem;
 
 /**
  * Spring MVC controller for 'Servico' management.
@@ -88,6 +90,19 @@ public class ServicoRestController {
 	@ResponseBody
 	public void delete(@PathVariable("id") Integer id) {
 		servicoService.delete(id);
+	}
+	
+	@RequestMapping( value="/tipoServico",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<TipoServicoListItem> findAllTipoServico() {
+		List<TipoServicoListItem> items = new LinkedList<TipoServicoListItem>();
+		for (TipoServico tipoServico : TipoServico.values()) {
+			items.add(new TipoServicoListItem(tipoServico));
+		}
+		return items;
 	}
 	
 }
